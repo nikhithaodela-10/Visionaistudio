@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisionAI Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span>◉</span> VisionAI Studio</div>
+    <a href="#about">About</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="tag">AI • COMPUTER VISION • WEB</p>
+      <h1>See the world through <span>AI</span>.</h1>
+      <p class="subtitle">Upload an image or use your camera to detect everyday objects directly in your browser.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="tabs">
+        <button class="tab active" id="uploadTab">Image Upload</button>
+        <button class="tab" id="cameraTab">Live Camera</button>
+      </div>
+
+      <div id="uploadPanel" class="panel">
+        <label class="dropzone" for="imageInput">
+          <div class="upload-icon">↑</div>
+          <h2>Upload an image</h2>
+          <p>PNG, JPG or WEBP</p>
+          <span class="choose">Choose Image</span>
+          <input id="imageInput" type="file" accept="image/*">
+        </label>
+      </div>
+
+      <div id="cameraPanel" class="panel hidden">
+        <div class="camera-wrap">
+          <video id="video" autoplay muted playsinline></video>
+          <canvas id="cameraCanvas"></canvas>
+          <div id="cameraPlaceholder">Camera preview will appear here</div>
+        </div>
+        <div class="controls">
+          <button id="startCamera" class="primary">Start Camera</button>
+          <button id="stopCamera" class="secondary">Stop</button>
+        </div>
+      </div>
+
+      <div id="resultSection" class="results hidden">
+        <div class="preview-card">
+          <canvas id="imageCanvas"></canvas>
+        </div>
+        <div class="info-card">
+          <div class="status"><span id="statusDot"></span><span id="status">Loading AI model...</span></div>
+          <h2>Detected Objects</h2>
+          <div id="detections" class="detections"></div>
+          <button id="clearBtn" class="secondary">Clear Result</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div><h2>How it works</h2><p>VisionAI Studio uses the COCO-SSD computer-vision model with TensorFlow.js. Detection runs inside your browser, so no image upload to a server is required for the demo.</p></div>
+      <div class="steps">
+        <div><b>01</b><span>Choose an image or camera</span></div>
+        <div><b>02</b><span>AI analyzes the visual input</span></div>
+        <div><b>03</b><span>Objects are highlighted</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>VisionAI Studio • Student AI/ML Project</footer>
+  <script src="script.js"></script>
+</body>
+</html>
